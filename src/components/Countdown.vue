@@ -75,7 +75,7 @@ export default {
   color: #95989A;
   font-size: 3vw;
   font-family: 'Roboto Condensed', serif;
-  font-weight: 40;
+  font-weight: lighter;
   margin-top: 10px;
   margin-bottom: 10px;
   text-align: center;
@@ -83,7 +83,7 @@ export default {
 .digit {
   color: #95989A;
   font-size: 16vw;
-  font-weight: 100;
+  font-weight: bold;
   font-family: 'Roboto', serif;
   margin: 1vw;
   text-align: center;

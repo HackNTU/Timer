@@ -1,8 +1,13 @@
 <template>
   <div id="app">
-    <!-- Get started by creating your first component: https://github.com/HackNTU/Timer/commit/b0dc3586375a9a6a1ef7fdaf11628a391c4e6162 -->
+    <!-- Get started by creating your first component: https://github.com/HackNTU/Timer/commit/ff81a21c5bd030dfc04d651d5b516f10723a976e -->
     <!-- <newcomponent></newcomponent> -->
-    <countdown deadline="Sun Mar 19 2017 14:00:00 GMT+0800 (CST)" id="countdown"></countdown>
+    <section class="split-left">
+      <countdown deadline="Sun Mar 19 2017 14:00:00 GMT+0800 (CST)" id="countdown"></countdown>
+    </section>
+    <section class="split-right">
+      <h1>.split-right</h1>
+    </section>
   </div>
 </template>
 
@@ -33,24 +38,6 @@ export default {
   margin-top: 60px;
 }
 
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-
 #countdown {
   align-items: center;
   bottom: 0;
@@ -61,5 +48,23 @@ a {
   position: absolute;
   right: 0;
   top:0;
+}
+
+.split-left{
+  border: 1px dashed red;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 75vw;
+  height: 100vh;
+}
+
+.split-right{
+  border: 1px dashed blue;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 25vw;
+  height: 100vh;
 }
 </style>

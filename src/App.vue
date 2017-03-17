@@ -11,7 +11,7 @@
       <countdown deadline="Sun Mar 19 2017 14:00:00 GMT+0800 (CST)" id="countdown"></countdown>
     </section>
     <section class="split-right">
-      <img id="logo" src="./assets/hackntu-logo.png" alt="hackntu logo">
+      <img id="logo" src="public/hackntu-logo.png" alt="hackntu logo">
       <agenda id="agenda"></agenda>
     </section>
   </div>
@@ -111,7 +111,7 @@ h1{
   display: block;
   position: relative;
 }
-#opacity-bg::after {
+/*#opacity-bg::after {
   content: "";
   background: url(../public/logo.png);
   background-repeat: no-repeat;
@@ -123,5 +123,5 @@ h1{
   right: 0;
   position: absolute;
   z-index: -1;
-}
+}*/
 </style>

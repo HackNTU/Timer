@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    
+
     <meta charset="utf-8">
     <title>timer</title>
 
@@ -12,6 +12,23 @@
   </head>
   <body>
     <div id="app"></div>
-    <script src="/dist/build.js"></script>
+    <script src="dist/build.js"></script>
   </body>
+
+  <!-- Quick fix for relative path issue -->
+  <style>
+  #opacity-bg::after {
+    content: "";
+    background: url(public/logo.png);
+    background-repeat: no-repeat;
+    background-position: center 105%;
+    opacity: 0.2;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+  }
+  </style>
 </html>

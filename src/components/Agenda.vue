@@ -69,9 +69,9 @@ export default {
       for(i=0; i<this.items.length; i++){
         var eventTime = new Date(this.items[i].start)
         if(eventTime > Math.trunc((new Date()).getTime())){
-          this.eventNow = this.items[i]
+          this.eventNow = this.items[i-1]
           console.log('eventNow:', this.eventNow.Name);
-          this.eventNext = this.items[i+1]
+          this.eventNext = this.items[i]
           console.log('eventNext: ', this.eventNext.Name);
           return
         }

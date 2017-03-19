@@ -4,11 +4,11 @@
     <!-- <newcomponent></newcomponent> -->
 
     <section class="top-left-fixed">
-      <h1>Hacking 倒數計時</h1>
+      <h1>簡報倒數計時</h1>
     </section>
-    <section class="split-left">
+    <section @click="count" class="split-left">
       <div id="opacity-bg"></div>
-      <countdown deadline="Sun Mar 19 2017 14:00:00 GMT+0800 (CST)" id="countdown"></countdown>
+      <countdown :deadline="DDL" id="countdown"></countdown>
     </section>
     <section class="split-right">
       <img id="logo" src="public/hackntu-logo.png" alt="hackntu logo">
@@ -21,17 +21,33 @@
 import NewComponent from './components/NewComponent.vue'
 import Countdown from './components/Countdown.vue'
 import Agenda from './components/Agenda.vue'
+
+Date.prototype.addDays = function(days) {
+  var dat = new Date(this.valueOf());
+  dat.setDate(dat.getDate() + days);
+  return dat;
+}
+
 export default {
   name: 'app',
-  data () {
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      DDL: 'Sun Mar 19 2017 16:00:00 GMT+0800 (CST)',
     }
   },
   components: {
     newcomponent: NewComponent,
     countdown: Countdown,
     agenda: Agenda,
+  },
+  methods:{
+    count(){
+      var ddl = new Date()
+      console.log(ddl);
+      ddl = ddl.addDays(8*0.0006944444444)
+      console.log(ddl);
+      this.DDL = ddl
+    }
   }
 }
 </script>
@@ -124,4 +140,10 @@ h1{
   position: absolute;
   z-index: -1;
 }*/
+button{
+  z-index: 1,
+}
+h1{
+  z-index: 100,
+}
 </style>

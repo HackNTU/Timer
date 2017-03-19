@@ -24,6 +24,7 @@ var _ = require('lodash');
 var Airtable = require('airtable');
 var scheduleDB = new Airtable({apiKey: 'keyYBgDwHL1wU0BZh'}).base('appcs0kkOF4h36C7J');
 var firstQuery = [];
+let twoDigits = number => number <= 99 ? ("0"+number).slice(-2) : number;
 
 export default {
   name: 'agenda',
@@ -32,15 +33,15 @@ export default {
       items: [],
       eventNow: {
         class: 'events',
-        Time: 'Now',
-        Name: 'Hacking',
-        Detail: '-',
+        Time: 'Fetching...',
+        Name: '...',
+        Detail: '...',
       },
       eventNext: {
         class: 'fun',
-        Time: '時間二',
-        Name: '標題二',
-        Detail: '副標二',
+        Time: 'Fetching...',
+        Name: '...',
+        Detail: '...',
       },
       color: {
         agenda: '#62C7FC',
@@ -53,33 +54,44 @@ export default {
 
   created() {
 
-    // Save Airtable data first
-    this.getRecords()
+    // Save Airtable Agenda data
+    this.syncAirtable()
 
-    // Update agenda if need
+    // Every 1 second, update agenda if need
     let updateAgenda = setInterval(() => {
       this.checkNext()
-    }, 5000)
+    }, 999)
+
+    // Every 15 seconds, sync with Airtable
+    let updateData = setInterval(() => {
+      this.syncAirtable()
+    }, 15000)
 
   },
 
   methods:{
+
+    // Update current agenda if nessesary
     checkNext(){
       var i
       for(i=0; i<this.items.length; i++){
         var eventTime = new Date(this.items[i].start)
         if(eventTime > Math.trunc((new Date()).getTime())){
           this.eventNow = this.items[i]
-          console.log('eventNow:', this.eventNow.Name);
           this.eventNext = this.items[i+1]
-          console.log('eventNext: ', this.eventNext.Name);
+          console.log(
+            '['+this.parseHMS((new Date()).getTime())+'] ' +
+            'now:' + this.eventNow.Name +
+            ' next:' + this.eventNext.Name
+          );
           return
         }
       }
     },
 
-    getRecords(){
-      console.log('getRecords()...');
+
+    // Download agenda data from Airtable
+    syncAirtable(){
       let items = []
       scheduleDB('小黑客松-流程').select({
         maxRecords: 20,
@@ -93,6 +105,19 @@ export default {
         if (err) { console.error(err); return; }
         this.items = items
       });
+      console.log(
+        '['+this.parseHMS((new Date()).getTime())+'] ' +
+        'Synced with Airtable'
+      )
+      return
+    },
+
+    // Translate milliseconds into <Hr>:<Min>:<Sec> format
+    parseHMS(ms){
+      var dat = new Date(ms)
+      return twoDigits(dat.getHours()) + ':' +
+      twoDigits(dat.getMinutes()) + ':' +
+      twoDigits(dat.getSeconds())
     },
   },
 }

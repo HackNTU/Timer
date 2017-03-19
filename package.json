@@ -1,7 +1,7 @@
 {
   "name": "timer",
   "description": "A countdown timer for hackathon event",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "choznerol <b02611002@ntu.edu.tw>",
   "private": true,
   "scripts": {

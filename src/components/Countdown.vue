@@ -2,6 +2,10 @@
   <div id="countdown">
 
     <div class="block">
+      <p class="digit">{{ days | non_negtive }}</p>
+      <p class="text">Days</p>
+    </div>
+    <div class="block">
       <p class="digit">{{ hours | non_negtive | two_digits }}</p>
       <p class="text">Hours</p>
     </div>
@@ -63,7 +67,10 @@ export default {
       return Math.trunc((this.normalizedDate - this.now) / 60) % 60;
     },
     hours() {
-      return Math.trunc((this.normalizedDate - this.now) / 60 / 60);
+      return Math.trunc((this.normalizedDate - this.now) / 60 / 60) % 24;
+    },
+    days() {
+      return Math.trunc((this.normalizedDate - this.now) / 60 / 60 / 24);
     },
   }
 }
@@ -79,7 +86,7 @@ export default {
 }
 .text {
   color: #95989A;
-  font-size: 3vw;
+  font-size: 2vw;
   font-family: 'Roboto Condensed', serif;
   font-weight: lighter;
   margin-top: 10px;
@@ -88,7 +95,7 @@ export default {
 }
 .digit {
   color: #95989A;
-  font-size: 16vw;
+  font-size: 10.5vw;
   font-weight: bold;
   font-family: 'Roboto', serif;
   margin: 1vw;

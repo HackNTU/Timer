@@ -4,11 +4,11 @@
     <!-- <newcomponent></newcomponent> -->
 
     <section class="top-left-fixed">
-      <h1>簡報倒數計時</h1>
+      <h1>2017台大黑客松，敬請期待！</h1>
     </section>
     <section @click="count" class="split-left">
       <div id="opacity-bg"></div>
-      <countdown :deadline="DDL" id="countdown"></countdown>
+      <countdown deadline="Sat Jul 22 2017 09:00:00 GMT+0800 (CST)" id="countdown"></countdown>
     </section>
     <section class="split-right">
       <img id="logo" src="public/hackntu-logo.png" alt="hackntu logo">
@@ -32,7 +32,7 @@ export default {
   name: 'app',
   data() {
     return {
-      DDL: 'Sun Mar 19 2017 16:00:00 GMT+0800 (CST)',
+      DDL: 'Sat Jul 22 2017 09:00:00 GMT+0800 (CST)',
     }
   },
   components: {
